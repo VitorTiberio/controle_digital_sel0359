@@ -42,4 +42,19 @@ Para este método, temos 3 possíveis aproximações, como mostra a imagem abaix
 
 ![Métodos de Discretização Linear](https://github.com/VitorTiberio/controle_digital_sel0359/blob/main/img/metodos_discretizacao_linear.PNG)
 
-Da esquerda para a direita, tem-se os métodos de : Backward, Forward e Tustin
+Da esquerda para a direita, tem-se os métodos de : Backward, Forward e Tustin. Abaixo, apresenta-se um pequeno resumo sobre cada um dos métodos: 
+
+| Méotodo | Aproximação |
+| --- | --- |
+| Forward | s = $\frac{z-1}{z.Ts}$ |
+| Backward | s = $\frac{z-1}{Ts}$ |
+| Tustin | s = $\frac{2}{Ts} \frac{(z-1)}{(z+1)}$ |
+
+Antes de partimos para os exercícios, cabe aqui algumas observações sobre os métodos: 
+
+> [!CAUTION]
+> Antes de deixarmos alguns exemplos, cabe aqui algumas observações importantes. Entre elas, temos:
+> * Quanto menor o período de amostragem (Ts), melhor é a aproximação do sistema em tempo contínuio original pelo sistema discreto. Mas, cuidado com a diminuição exagerada de Ts;
+> * Para usar o método de euler-forward, deve-se sempre verificar se a frequência de amostragem não gerará polos instáveis;
+> * Se a frequência de amostragem for muito próxima da taxa de Nyquist, recomenda-se usar métodos com menor distorção, tais como Tustin ou mapeamento de polos e zeros;
+> * O método de Tustin não é adequado para aproximação de derivadas puras.
