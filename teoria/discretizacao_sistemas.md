@@ -63,17 +63,52 @@ Antes de partimos para os exercícios, cabe aqui algumas observações sobre os 
 # Exemplos de códigos em MATLAB para cálculo dos métodos de discretização # 
 ## Exemplo 01 ## 
 Suponha a que temos a seguinte função transferência: 
+
 $$ 
 G(s) = \frac{(s+3)}{(s+1)(s+2)}
 $$
+
 A função de transferência equivalente em tempo discreto pode ser computada usando o MATLAB atraves da função c2d para os metodos degrau-invariante (zoh), impulso-invariante
 (impulse), mapeamento casado de polos e zeros (matched), e o metodo Bilinear (tustin), alem de outros. Encontre o equivalente de G(s) para cada um dos métodos. 
 ### Resolução ###
+```matlab
+close all %fecha todas janelas
+clear all %limpa memoria
+clc %limpa command window
+%%
+num=[1 3];
+den=conv([1 1],[1 2]);
+G=tf(num,den); %FT em tempo continuo
+T=0.1;%tempo de amostragem
+Gd1=c2d(G,T,'zoh') %obtem a FT discreta usando metodo degrau−invariante
+Gd2=c2d(G,T,'impulse') %obtem a FT discreta usando metodo impulso−invariante
+Gd3=c2d(G,T,'matched') %obtem a FT discreta usando o m t o d o map. casado ...
+polos/zeros
+Gd4=c2d(G,T,'tustin') %obtem a FT discreta usando metodo bilinear (tustin)
+```
+Após a discretização da função de transferência, pode-se comparar a resposta em frequência resultante de cada método de discretização usando o comando **bode(contínua, discreta)**
+```matlab
+figure
+bode(G,Gd1)
+title('ZOH')
+figure
+bode(G,Gd2)
+title('Impulse')
+figure
+bode(G,Gd3)
+title('Matched')
+figure
+bode(G,Gd4)
+title('tustin')
+```
 ## Exemplo 02 ## 
+### Resolução ### 
 Faça o mesmo que o exercício anterior, mas agora considerando que a função de transferência seja: 
+
 $$
 G(s) = \frac{s^2+s+1}{s^3+2*s^2+3*s+2}
 $$
+
 ```matlab
 clear all;
 close all; 
