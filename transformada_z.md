@@ -165,6 +165,21 @@ x_n = n*T_s
 X_z = ztrans(x_n)
 pretty (X_z)
 ```
+# E a transformada inversa ? 
 
+No MATLAB, o comando **iztrans()** de matemática simbólica pode ser utilizado para obter a transformada-z. Um exemplo de aplicação pode ser encontrado abaixo: 
+
+```matlab
+clear all;
+close all;
+clc
+%% Definindo as variáveis simbólicas %%
+syms n z;
+X_z = (z+1)/(z^2+0.3*z+0.02)
+pretty(X_z)
+%% Calculando a transformada Inversa %%
+x_n = iztrans(X_n);
+pretty(x_n)
+```
 
 
