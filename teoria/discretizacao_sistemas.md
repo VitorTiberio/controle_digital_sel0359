@@ -58,3 +58,58 @@ Antes de partimos para os exercícios, cabe aqui algumas observações sobre os 
 > * Para usar o método de euler-forward, deve-se sempre verificar se a frequência de amostragem não gerará polos instáveis;
 > * Se a frequência de amostragem for muito próxima da taxa de Nyquist, recomenda-se usar métodos com menor distorção, tais como Tustin ou mapeamento de polos e zeros;
 > * O método de Tustin não é adequado para aproximação de derivadas puras.
+
+---
+# Exemplos de códigos em MATLAB para cálculo dos métodos de discretização # 
+## Exemplo 01 ## 
+Suponha a que temos a seguinte função transferência: 
+$$ 
+G(s) = \frac{(s+3)}{(s+1)(s+2)}
+$$
+A função de transferência equivalente em tempo discreto pode ser computada usando o MATLAB atraves da função c2d para os metodos degrau-invariante (zoh), impulso-invariante
+(impulse), mapeamento casado de polos e zeros (matched), e o metodo Bilinear (tustin), alem de outros. Encontre o equivalente de G(s) para cada um dos métodos. 
+### Resolução ###
+## Exemplo 02 ## 
+Faça o mesmo que o exercício anterior, mas agora considerando que a função de transferência seja: 
+$$
+G(s) = \frac{s^2+s+1}{s^3+2*s^2+3*s+2}
+$$
+```matlab
+clear all;
+close all; 
+clc 
+% Definindo a função de transferência contínua: 
+num = [1 1 1];
+den = [1 2 3 2];
+G = tf(num, den);
+%Definindo a função de transferência contínua simbólica (para simples
+%conferência):
+syms s
+num_sym = poly2sym(num, s);
+den_sym = poly2sym(den, s);
+G_sym = num_sym / den_sym;
+pretty(G_sym)
+% Obtendo as funções de transferência discretas:
+Ts = 0.1;
+Gd_zoh = c2d(G, Ts, 'zoh');
+Gd_impulse = c2d(G, Ts, 'impulse')
+Gd_matched = c2d(G, Ts, 'matched')
+Gd_tustin = c2d(G, Ts, 'tustin')
+% Traçando a resposta em frequência de cada função
+figure 
+bode(G, Gd_zoh)
+title('ZOH - Questão 2')
+legend('Contínuo', 'Discreto')
+figure 
+bode(G, Gd_impulse)
+title('Impulse - Questão 2')
+legend('Contínuo', 'Discreto')
+figure 
+bode(G, Gd_matched)
+title('Matched - Questão 2')
+legend('Contínuo', 'Discreto')
+figure
+bode(G, Gd_tustin)
+title('Tustin - Questão 2')
+legend('Contínuo', 'Discreto')
+```
