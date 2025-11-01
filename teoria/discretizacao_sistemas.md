@@ -82,8 +82,7 @@ clc
 num = [1 1 1];
 den = [1 2 3 2];
 G = tf(num, den);
-%Definindo a função de transferência contínua simbólica (para simples
-%conferência):
+% Definindo a função de transferência contínua simbólica (para simples conferência):
 syms s
 num_sym = poly2sym(num, s);
 den_sym = poly2sym(den, s);
