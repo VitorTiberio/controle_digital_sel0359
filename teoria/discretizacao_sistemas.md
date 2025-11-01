@@ -36,4 +36,8 @@ C_s = tf(num, den);
 pretty(C_s)
 C_d = c2d(C_s,Ts,'matched')
 ```
+---
+# Equivalente discreto por Integração #
+Para este método, temos 3 possíveis aproximações, como mostra a imagem abaixo: 
+![Métodos de Discretização Linear](https://github.com/VitorTiberio/controle_digital_sel0359/tree/main/img)
 
