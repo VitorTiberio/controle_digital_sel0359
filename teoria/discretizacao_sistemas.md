@@ -37,7 +37,7 @@ pretty(C_s)
 C_d = c2d(C_s,Ts,'matched')
 ```
 ---
-# Equivalente discreto por Integração #
+# 2 - Equivalente discreto por Integração #
 Para este método, temos 3 possíveis aproximações, como mostra a imagem abaixo: 
 
 ![Métodos de Discretização Linear](https://github.com/VitorTiberio/controle_digital_sel0359/blob/main/img/metodos_discretizacao_linear.PNG)
@@ -82,8 +82,7 @@ G=tf(num,den); %FT em tempo continuo
 T=0.1;%tempo de amostragem
 Gd1=c2d(G,T,'zoh') %obtem a FT discreta usando metodo degrau−invariante
 Gd2=c2d(G,T,'impulse') %obtem a FT discreta usando metodo impulso−invariante
-Gd3=c2d(G,T,'matched') %obtem a FT discreta usando o m t o d o map. casado ...
-polos/zeros
+Gd3=c2d(G,T,'matched') %obtem a FT discreta usando método map. casado polos/zeros
 Gd4=c2d(G,T,'tustin') %obtem a FT discreta usando metodo bilinear (tustin)
 ```
 Após a discretização da função de transferência, pode-se comparar a resposta em frequência resultante de cada método de discretização usando o comando **bode(contínua, discreta)**
