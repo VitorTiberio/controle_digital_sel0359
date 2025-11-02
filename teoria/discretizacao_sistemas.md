@@ -178,3 +178,57 @@ legend('Contínuo', 'Discreto')
 > * **zoh** insere uma atenuação para altas frequências;
 > * O **impulse invariant** gera aliasing;
 > * O **matched** não preserva exatamente o ganho e a fase (garante estabilidade (pólos mapeados corretamente), mas pode distorcer a resposta em frequência).
+
+## Exemplo 03 ## 
+Compare os métodos de discretização invariante ao degrau (zoh) e impulso. Para isso, considere a seguinte função de transferência: 
+
+$$
+\frac{(s+2)(s+1)}{(s+5)(s+3)(s+7)}
+$$
+
+O que pode-se observar em relação às respostas temporais entre os dois métodos de discretização ? 
+
+### Resolução ### 
+Primeiramente, vamos desenvolver o código em MATLAB: 
+```matlab
+clear all
+close all 
+clc
+% Definindo a função de transferência contínua % 
+num = [1 3 2];
+den = [1 7 8 56 105];
+G = tf(num, den);
+% Resposta ao impulso e ao degrau:
+dt = 0.001;
+t = 0:dt:5; %vetor tempo contínuo
+[y_degrau, t] = step(G, t);
+[y_impulso, t] = impulse(G, t);
+Ts = 0.1;
+% Obtendo as funções de transferência discretas:
+Gd_zoh = c2d(G, Ts, 'zoh');
+Gd_impulse = c2d(G, Ts, 'impulse');
+td = 0:Ts:5; %vetor tempo discreto
+[y_du1,td] = step(Gd_zoh, td);
+[y_du2,td] = step(Gd_impulse, td);
+[y_di1,td] = impulse(Gd_zoh, td);
+[y_di2,td] = impulse(Gd_impulse, td);
+figure
+plot(t, y_degrau, 'LineWidth',1.5)
+hold on
+stairs(td, y_du1, 'LineWidth', 1.5)
+stairs(td, y_du2, 'LineWidth', 1.5)
+xlabel('t(s)')
+ylabel('y(t)')
+title('Atividade 03 - Resposta ao Degrau')
+legend('Sinal Contínuo', 'Invariante ao Degrau', 'Invariante ao Impulso')
+figure
+plot(t, y_impulso, 'LineWidth',1.5)
+hold on 
+stairs(td, y_di1, 'LineWidth',1.5)
+stairs(td, y_di2, 'LineWidth',1.5)
+title('Atividade 03 - Resposta ao Impulso')
+xlabel('t(s)')
+ylabel('y(t)')
+legend('Sinal Contínuo', 'Invariante ao Degrau', 'Invariante ao Impulso')
+```
+Nota-se que, na resposta ao degrau, o ZOH, "respeita" o sinal contínuo, enquanto o sinal discreto que é dado pela resposta ao impulso não. O mesmo ocorre para o outro sinal, onde a discretização invariante ao impulso "casa" com o sinal contínuo, enquanto o sinal discreto invariante ao degrau não. Isso mostra que os métodos de ZOH e Impulse representam bem o sinal contínuo e que dependendo da entrada, um dos métodos apresenta uma melhor performace do que outro. 
