@@ -50,7 +50,7 @@ Da esquerda para a direita, tem-se os métodos de : Backward, Forward e Tustin. 
 | Backward | s = $\frac{z-1}{Ts}$ |
 | Tustin | s = $\frac{2}{Ts} \frac{(z-1)}{(z+1)}$ |
 
-Antes de partimos para os exercícios, cabe aqui algumas observações sobre os métodos: 
+Cabe aqui algumas observações sobre os métodos: 
 
 > [!CAUTION]
 > Antes de deixarmos alguns exemplos, cabe aqui algumas observações importantes. Entre elas, temos:
@@ -58,6 +58,32 @@ Antes de partimos para os exercícios, cabe aqui algumas observações sobre os 
 > * Para usar o método de euler-forward, deve-se sempre verificar se a frequência de amostragem não gerará polos instáveis;
 > * Se a frequência de amostragem for muito próxima da taxa de Nyquist, recomenda-se usar métodos com menor distorção, tais como Tustin ou mapeamento de polos e zeros;
 > * O método de Tustin não é adequado para aproximação de derivadas puras.
+---
+# 3 - Aproximação por segurador de ordem zero (ZOH) # 
+A aproximação por ZOH também é conhecida como invariância ao degrau. Para realizar um projeto de controle diretamente no plano-z a partir de uma planta contínua, deve-se, primeiramente, obter o equivalente discreto da planta pelo método ZOH. 
+
+>[!CAUTION]
+> Uma atenção especial deve ser destacada quanto a ordem relativa do sistema (a diferença entre o número de zeros e polos). No caso de a ordem relativa ser maior ou igual a dois, se o período de amostragem foi suficientemente pequeno, o sistema em tempo discreto pode apresentar zeros de fase não mínimas, mesmo que o sistema em tempo contínuo seja de fase mínima.
+
+## Exemplo ## 
+Suponha que queremos determinar a função de transferência discreta da planta, considerando o efeito do ZOH e um período de amostragem Ts = 0,1s: 
+
+$$
+G(s) = \frac{1}{s+4}
+$$
+
+Utilizando o MATLAB, obtem-se a seguinte solução: 
+```matlab
+clear all;
+close all;
+clc
+%% Definindo a função G(S) %%
+num = 1; den = [1 4]
+G_s = tf(num, den)
+Ts = 0.1;
+%% Calculando Gd(z) %%
+G_z = c2d(G_s, Ts, 'zoh')
+```
 
 ---
 # Exemplos de códigos em MATLAB para cálculo dos métodos de discretização # 
