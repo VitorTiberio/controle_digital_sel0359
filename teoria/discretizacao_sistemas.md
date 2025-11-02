@@ -40,7 +40,10 @@ C_d = c2d(C_s,Ts,'matched')
 # 2 - Equivalente discreto por Integração #
 Para este método, temos 3 possíveis aproximações, como mostra a imagem abaixo: 
 
-![Métodos de Discretização Linear](https://github.com/VitorTiberio/controle_digital_sel0359/blob/main/img/metodos_discretizacao_linear.PNG)
+<p align="center">
+  <img src="img/metodos_discretizacao_linear.PNG" alt="Estabilidade do Sistema no plano-s">
+</p>
+<p align="center"><em> Métodos de Discretização Linear </em></p>
 
 Da esquerda para a direita, tem-se os métodos de : Backward, Forward e Tustin. Abaixo, apresenta-se um pequeno resumo sobre cada um dos métodos: 
 
