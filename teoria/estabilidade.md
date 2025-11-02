@@ -16,7 +16,7 @@ Nesta parte do conteúdo, é esperado que você já saiba que:
 Para a análise da estabilidade de um sistema, primeiro, vamos exemplificar o que foi constuído no tópico 1 deste resumo, com a imagem abaixo: 
 
 <p align="center">
-  <img src="img/mapeamento_s_em_z.PNG" alt="Estabilidade do Sistema no plano-s">
+  <img src="img/estabilidade_malha_fechada.PNG" alt="Estabilidade do Sistema no plano-s">
 </p>
 <p align="center"><em> Mapeamento de S em Z </em></p>
 
