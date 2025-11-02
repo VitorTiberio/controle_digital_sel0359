@@ -146,3 +146,9 @@ bode(G, Gd_tustin)
 title('Tustin - Questão 2')
 legend('Contínuo', 'Discreto')
 ```
+> [!IMPORTANT]
+>  Em relação à resposta em frequência para os diferentes métodos de discretização que foram utilizados, nota-se que o método de tustin é o único método que tem um "casamento" de fase e magnitude em relação ao sinal contínuo. Todos os outros métodos possuem variações (ou de fase, ou de magnitude ou ambos) do sinal discreto em relação ao contínuo.
+> Em relação a estas mudanças, nota-se:
+> * **zoh** insere uma atenuação para altas frequências;
+> * O **impulse invariant** gera aliasing;
+> * O **matched** não preserva exatamente o ganho e a fase (garante estabilidade (pólos mapeados corretamente), mas pode distorcer a resposta em frequência).
