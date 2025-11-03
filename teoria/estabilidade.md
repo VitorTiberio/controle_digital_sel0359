@@ -95,3 +95,13 @@ td=1:10; %cria vetor de tempo discreto
 figure
 stem(td,subs(f,'n',td)) %exibe sinal em tempo discreto
 ```
+# 3 - Lugar Geométrico das Raízes # 
+Em sistemas de tempo discreto, a equação característica pode ser escrita como: 
+$$ 
+F(z) + 1 = 0
+$$
+Verifica-se que, no caso de sistemas de tempo discreto, as condições necessárias para que um dado ponto no plano-z esteja sobre o lugar geométrico das raízes (polo de malha fechada) são semelhantes ao caso de sistemas contínuos. Para a contrução do LGR, utilizando o MATLAB, utiliza-se o comando **rlocus**. 
+## Exemplo ##
+Determine a faixa de valores de Ts para que o sistema com G(s) = $10\frac{2}{(s+2)}$ seja estável. 
+### Resolução ###
+
