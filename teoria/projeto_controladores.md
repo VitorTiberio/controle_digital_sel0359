@@ -33,7 +33,7 @@ O número de polos na orgigem do sistema define o tipo. Sistemas:
 * Tipo 3: Erro nulo para a entrada em degrau, rampa e parábola.
 
 <p align="center">
-  <img src="teoria/img/resumo_tipos.PNG" alt="Resumo dos tipos">
+  <img src="img/resumo_tipos.PNG" alt="Resumo dos tipos">
 </p>
 <p align="center"><em> Resumo dos tipos </em></p>
 
