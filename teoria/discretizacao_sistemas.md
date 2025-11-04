@@ -45,12 +45,12 @@ Para este método, temos 3 possíveis aproximações, como mostra a imagem abaix
 </p>
 <p align="center"><em> Métodos de Discretização Linear </em></p>
 
-Da esquerda para a direita, tem-se os métodos de : Backward, Forward e Tustin. Abaixo, apresenta-se um pequeno resumo sobre cada um dos métodos: 
+Da esquerda para a direita, tem-se os métodos de : Forward, Backward e Tustin. Abaixo, apresenta-se um pequeno resumo sobre cada um dos métodos: 
 
 | Méotodo | Aproximação |
 | --- | --- |
-| Forward | s = $\frac{z-1}{z.Ts}$ |
-| Backward | s = $\frac{z-1}{Ts}$ |
+| Backward | s = $\frac{z-1}{z.Ts}$ |
+| Forward | s = $\frac{z-1}{Ts}$ |
 | Tustin | s = $\frac{2}{Ts} \frac{(z-1)}{(z+1)}$ |
 
 Cabe aqui algumas observações sobre os métodos: 
