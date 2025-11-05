@@ -68,7 +68,7 @@ A = simplify(subs(Am));
 B = simplify(subs(Bm));
 ```
 
-## Discretização de equação de estados contínua ## 
+## Discretização de espaço de estados contínua ## 
 No MATLAB, o comando **c2d** pode ser utilizado para encontrar a representação discreta com o segurador de ordem zero, da seguinte forma: [Phi, Gamma] = c2d(A, B, Ts).
 ### Exemplo ###
 Suponha que queremos discretizar o seguinte modelo de espaço de estados: 
