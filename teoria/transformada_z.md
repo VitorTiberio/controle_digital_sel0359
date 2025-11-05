@@ -1,5 +1,6 @@
 # 📘 Transformada Z 📘 #
-
+> Este resumo apresenta a definição e como calcular a transformada-Z de sinais. 
+---
 # Defininição e Exemplos 
 
 A transformada Z é como se ela fizesse o papel da transformada de Laplace (𝓛) em tempo discreto.
@@ -181,5 +182,9 @@ pretty(X_z)
 x_n = iztrans(X_n);
 pretty(x_n)
 ```
-
+A transformada-Z exata pode ser consultada na tabela abaixo: 
+<p align="center">
+  <img src="img/tabela_transformada_z.png" alt="Tabela da Transformada-Z">
+</p>
+<p align="center"><em> Tabela de Transformada-Z exata </em></p>
 
