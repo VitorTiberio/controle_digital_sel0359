@@ -101,18 +101,21 @@ Ad=[1 −2;...
 Bd=[1;...
 2];
 %% Avaliando se os autovalores da matriz dinâmica estão dentro de um circulo unitário %% 
+
 eig(Ad) %obtem autovalores de Ad
 if any(abs(eig(Ad))≥1) %verifica se existe algum autovalor maior que 1
-disp('Sistema nao e assintoticamente estavel!')
+    disp('Sistema nao e assintoticamente estavel!')
 else
-disp('Sistema e assintoticamente estavel!')
+    disp('Sistema e assintoticamente estavel!')
 end
-%% Verificando pela equação de Lyapunov %% 
+
+%% Verificando pela equação de Lyapunov %%
+
 Q=eye(size(Ad))
 P=dlyap(Ad,Q) %obtem solucao da eq. de lyapunov
 if any(eig(P)≤0) %verifica se P>0
-disp('Sistema nao e assintoticamente estavel!')
+    disp('Sistema nao e assintoticamente estavel!')
 else
-disp('Sistema e assintoticamente estavel!')
+    disp('Sistema e assintoticamente estavel!')
 end
 ```
