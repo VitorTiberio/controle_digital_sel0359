@@ -4,7 +4,7 @@ Para acessar a teoria sobre:
 - Transformada-Z, clique [Aqui](teoria/transformada_z.md)
 - Discretização de Sistemas, clique [Aqui](teoria/discretizacao_sistemas.md)
 - Análise da Estabilidade de Sistemas, clique [Aqui](teoria/estabilidade.md)
-- Projeto de Controladores, clqiue [Aqui](teoria/projeto_controladores.md)
+- Projeto de Controladores, clique [Aqui](teoria/projeto_controladores.md)
 - Espaço de Estados, clique [Aqui](teoria/espaco_estados.md)
 ---
 ## 📚 Referências ##
