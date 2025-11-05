@@ -119,3 +119,35 @@ else
     disp('Sistema e assintoticamente estavel!')
 end
 ```
+---
+
+# Controlabilidade e Observabilidade # 
+
+É o primeiro passo para projetar o controlador de um sistema, verificar se o mesmo é controlável. Para isso, considere o seguinte sistema em espaço de estados em tempo discreto. 
+
+O código em MATLAB a seguir avalia o rank da matriz de controlabilidade e observabilidade do sistema: 
+```matlab
+close all
+clear all
+clc
+%%
+A=[3 −1;0 2];
+B=[1;2];
+H=[0 1];
+%% controlabilidade
+C=ctrb(A,B)
+disp(['rank(C)=' num2str(rank(C))])
+if rank(C)==size(A,1)
+disp('Sistema controlavel')
+else
+disp('Sistema parcialmente controlavel')
+end
+%% observabilidade
+O=obsv(A,H)
+disp(['rank(O)=' num2str(rank(O))])
+if rank(O)==size(A,1)
+disp('Sistema observavel')
+else
+disp('Sistema parcialmente observavel')
+end
+```
