@@ -87,4 +87,32 @@ B=[1;...
 %% Discretizando o sistema %% 
 [Ad2,Bd2]=c2d(A,B,Ts)
 ```
+# Estabilidade Assintótica de Modelos de Espaço de Estados #
+Para explicarmos a estabilidade por meio de um exemplo, considere o seguinte modelo: 
 
+Um modelo em espaço de estados em tempo discreto é assintoticamente estável se os autovalores da matriz dinâmica Ad estiverem dentro de um circulo unitário. Outra forma de avaliar é através da equação de Lyapunov. No MATLAB, pode-se implementar o seguinte código:
+```matlab
+close all
+clear all
+clc
+%% Degfinindo as matrizes A e B: 
+Ad=[1 −2;...
+2 1];
+Bd=[1;...
+2];
+%% Avaliando se os autovalores da matriz dinâmica estão dentro de um circulo unitário %% 
+eig(Ad) %obtem autovalores de Ad
+if any(abs(eig(Ad))≥1) %verifica se existe algum autovalor maior que 1
+disp('Sistema nao e assintoticamente estavel!')
+else
+disp('Sistema e assintoticamente estavel!')
+end
+%% Verificando pela equação de Lyapunov %% 
+Q=eye(size(Ad))
+P=dlyap(Ad,Q) %obtem solucao da eq. de lyapunov
+if any(eig(P)≤0) %verifica se P>0
+disp('Sistema nao e assintoticamente estavel!')
+else
+disp('Sistema e assintoticamente estavel!')
+end
+```
