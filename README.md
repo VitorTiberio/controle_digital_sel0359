@@ -5,7 +5,7 @@ Para acessar a teoria sobre:
 - Discretização de Sistemas, clique [Aqui](teoria/discretizacao_sistemas.md)
 - Análise da Estabilidade de Sistemas, clique [Aqui](teoria/estabilidade.md)
 - Projeto de Controladores, clqiue [Aqui](teoria/projeto_controladores.md)
-
+- Espaço de Estados, clique [Aqui](teoria/espaco_estados.md)
 ---
 ## 📚 Referências ##
 > [!NOTE]
