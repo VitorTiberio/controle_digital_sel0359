@@ -7,8 +7,8 @@ O objetivo nesta parte é definir uma função de transferência discreta Cd(z) 
 
 ---
 # 1 - Mapeamento casado de polos e zeros # 
-O método do mapeamento casadi de polos e zeros consiste em mapear diretamente polos e zeros do plano-s para o plano-z. Neste procedimento, considera-se $z = e^{sTs}$ como transformação entre z e s. Para calcularmos o equivalente discreto, segue-se o seguinte procedimento: 
-1. Todos os polos e zeros finitos no plano-s são mapeados no plano-z como $z = e^{sTs}$. Por exemplo, se um dos polos da função contínua é s = -a, logo, em Z será $Z = e^(-aTs)$;
+O método do mapeamento casado de polos e zeros consiste em mapear diretamente polos e zeros do plano-s para o plano-z. Neste procedimento, considera-se $z = e^{sTs}$ como transformação entre z e s. Para calcularmos o equivalente discreto, segue-se o seguinte procedimento: 
+1. Todos os polos e zeros finitos no plano-s são mapeados no plano-z como $z = e^{sTs}$. Por exemplo, se um dos polos da função contínua é s = -a, logo, em Z será $Z = e^{-aTs}$;
 2. Os seros em $\text{s} \to \infty$ ou fora da faixa primária são mapeados em z = -1, que representa a maior frequência possível da funçãao de transferência discreta;
 3. O ganho de Cd(z) deve ser ajustado em uma frequência crítica. Normalmente, este ponto escolhido é em baixas frequências:
 
