@@ -41,3 +41,29 @@ $$
 $$
 l\ddot{\theta} - \ddot{x}cos(\theta) - gsin(\theta) = 0
 $$
+
+Para resolver este problema, pode-se implementar o seguinte código em MATLAB: 
+```matlab
+clear all
+close all
+clc
+%% Definindo as variáveis do sistema %%
+syms m M l F g
+syms th th_d th_dd
+syms x x_d x_dd
+%% Definindo as equações de movimento %%
+Eq_1 = (M+m)*x_dd - m*l*th_dd*cos(th) + m*l*th_d^2*sin(th) - F;
+Eq_2 = l*th_dd - x_dd*cos(th)-g*sin(th);
+u = F;
+S = solve(Eq_1 == 0, Eq_2 == 0, x_dd, th_dd);
+%% Vetor de estados e sua derivada %%
+x_vet = [x; x_d; th; th_d];
+x_vet_dot = [x_d; S.x_dd; th_d; S.th_dd];
+%% Linearizando o sistema %%
+Am = simplify(jacobian(x_vet_dot, x_vet));
+Bm = simplify(jacobian(x_vet_dot, u));
+%% Ponto de Equilíbrio %%
+x = 0; x_d = 0; th = 0; th_d = 0; u = 0;
+A = simplify(subs(Am));
+B = simplify(subs(Bm));
+```
