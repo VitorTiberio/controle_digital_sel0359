@@ -141,17 +141,17 @@ Gf1=K*Gd/(1+K*Gd);
 [y1,t]=step(Gf1,t);
 figure
 stairs(t,y1)
-title('K>K c (Estavel)')
+title('K>Kc (Estavel)')
 K=Kc;
 Gf2=K*Gd/(1+K*Gd);
 [y2,t]=step(Gf2,t);
 figure
 stairs(t,y2)
-title('K=K c (Marginalmente estavel)')
+title('K=Kc (Marginalmente estavel)')
 K=1.5;
 Gf3=K*Gd/(1+K*Gd);
 [y3,t]=step(Gf3,t);
 figure
 stairs(t,y3)
-title('K<K c (Instavel)')
+title('K<Kc (Instavel)')
 ```
