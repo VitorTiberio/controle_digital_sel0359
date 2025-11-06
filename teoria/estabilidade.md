@@ -46,6 +46,14 @@ Quando nos referimos a um sistema discreto, o sistema será estável se o mesmo 
 </p>
 <p align="center"><em> Estabilidade do sistema no plano-z </em></p>
 
+## Critério de Jury ## 
+<p align="center">
+  <img src="img/jury_1.PNG" width="250">
+  <img src="img/jury_2.PNG" width="250">
+  <img src="img/jury_3.PNG" width="250">
+</p>
+
+
 --- 
 # Exemplos de códigos em MATLAB para verificação da estabilidade do sistema # 
 ## Exemplo 01 ## 
