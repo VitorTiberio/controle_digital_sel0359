@@ -235,3 +235,70 @@ ylabel('y(t)')
 legend('Sinal Contínuo', 'Invariante ao Degrau', 'Invariante ao Impulso')
 ```
 Nota-se que, na resposta ao degrau, o ZOH, "respeita" o sinal contínuo, enquanto o sinal discreto que é dado pela resposta ao impulso não. O mesmo ocorre para o outro sinal, onde a discretização invariante ao impulso "casa" com o sinal contínuo, enquanto o sinal discreto invariante ao degrau não. Isso mostra que os métodos de ZOH e Impulse representam bem o sinal contínuo e que dependendo da entrada, um dos métodos apresenta uma melhor performace do que outro. 
+
+## Exemplo 4 ## 
+Suponha um circuito RLC, cuja função de transferência é definida por: 
+
+$$
+G(s) = \frac{1}{CLS^2 + RCS + 1}
+$$
+
+Encontre a função de transferência equivalente discreta, usando o método de Tustin. Em seguida, determine a resposta ao degrau, impulso e frequência. 
+
+### Resolução ### 
+Para isso, fazemos o seguinte código em MATLAB: 
+```matlab
+clear all
+close all
+clc
+%% Definindo as variáveis %%
+R =
+L =
+C =
+Ts =
+%% Definindo a função de transferência %%
+num = [0 1];
+den = [C*L R*C 1];
+G_s = tf(num, den);
+%% Obtendo a função de transferência discretizada %%
+Gd = c2d(G_s, Ts, 'tustin')
+pretty(G_z)
+```
+Agora, vamos obter a resposta ao degrau: 
+```matlab
+%% Obtendo a resposta ao degrau %%
+dt = 0.000001;
+t = 0:dt:5;
+td = 0:Ts:5;
+[y,t] = step(G_s,t);
+[yd, td] = step(Gd, td); 
+figure (1)
+plot(t,y)
+hold on
+stairs(td,yd)
+title('Resposta ao degrau')
+xlabel('t(s)')
+ylabel('y(t))
+legend('continuo','discreto')
+```
+Agora, analisa-se a resposta ao Impulso: 
+```matlab
+%% Obtendo a resposta ao Impulso %%
+[y,t] = impulse(G_s,t);
+[yd, td] = impulse(Gd, td); 
+figure (2)
+plot(t,y)
+hold on
+stairs(td,yd)
+title('Resposta ao impulso')
+xlabel('t(s)')
+ylabel('y(t))
+legend('continuo','discreto')
+```
+Por fim, temos a análise pelo diagrama de Bode: 
+```matlab
+figure(3)
+bode(G,Gd)
+title('Resposta em frequência')
+legend('contínuo', 'discreto')
+```
