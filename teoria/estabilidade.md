@@ -97,11 +97,61 @@ stem(td,subs(f,'n',td)) %exibe sinal em tempo discreto
 ```
 # 3 - Lugar Geométrico das Raízes # 
 Em sistemas de tempo discreto, a equação característica pode ser escrita como: 
+
 $$ 
 F(z) + 1 = 0
 $$
+
 Verifica-se que, no caso de sistemas de tempo discreto, as condições necessárias para que um dado ponto no plano-z esteja sobre o lugar geométrico das raízes (polo de malha fechada) são semelhantes ao caso de sistemas contínuos. Para a contrução do LGR, utilizando o MATLAB, utiliza-se o comando **rlocus**. 
 ## Exemplo ##
 Determine a faixa de valores de Ts para que o sistema com G(s) = $10\frac{2}{(s+2)}$ seja estável. 
 ### Resolução ###
 
+## Exemplo ##  
+Nessa questão, o objetivo e visualizar o ganho crítico de uma malha de controle digital. Para isso, considere o seguinte exemplo com T = 0.1s:
+
+$$
+G(z) = \frac{0.06027z^2 + 0.01096z - 0.04932}{z^2 − 2.164z + 1.219}
+$$
+
+O codigo a seguir obtém o Lugar Geométrico das Raízes da equacão característica do sistema de controle digital ilustrado na Figura 1 em função de um ganho K através do comando **rlocus**. Alem do mais, o ganho crítico Kc pode ser obtido usando o comando margin.
+```matlab
+close all %fecha todas janelas
+clear all %limpa memoria
+clc %limpa command window
+%%
+Gd=tf([0.06027 0.01096 −0.04932],[1 −2.164 1.219],0.1);
+rlocus(Gd)
+zgrid
+title('Lugar Geometrico das Raizes')
+axis equal
+Kc=margin(Gd)
+```
+Portanto, para uma malha de controle fechada (com realimentação unitária), para esse sistema G(z), avaliando o LGR, tem-se: 
+* Estável, se K > $K_c$;
+* Instável, se K < $K_c$;
+* Marginalmente estável se $K = K_c$.
+
+O código em MATLAB a seguir apresenta a resposta do degrau desse sistema para cada situação: 
+```matlab
+T=0.1;
+t=0:T:20;
+K=2.5;
+Gf1=K*Gd/(1+K*Gd);
+[y1,t]=step(Gf1,t);
+figure
+stairs(t,y1)
+title('K>K c (Estavel)')
+K=Kc;
+Gf2=K*Gd/(1+K*Gd);
+[y2,t]=step(Gf2,t);
+figure
+stairs(t,y2)
+title('K=K c (Marginalmente estavel)')
+K=1.5;
+Gf3=K*Gd/(1+K*Gd);
+[y3,t]=step(Gf3,t);
+figure
+stairs(t,y3)
+title('K<K c (Instavel)')
+```
